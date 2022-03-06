@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Log in</title>
+
+</head>
+
+<body>
+    <p><a href="{% url 'home' %}">Home</a><span>....</span><a href="{% url 'login' %}">Librain
+            Login</a><span>....</span><a href="{% url 'librarian_logout' %}">Logout</a><span>....</span><a
+            href="{% url 'register' %}">Librain Signup</a><span>....</span><a href="{% url 'book' %}">Book CRUD</a>
+    </p>
+    <hr>
+    <div>
+        <div>
+            <b>Library Management</b>
+            <p>Admin</p>
+            <p>Sign in to start your session</p>
+
+            <form action="" method="post">
+                {% csrf_token %}
+                <div>
+                    <input type="email" name="email" placeholder="Email">
+
+                </div>
+                <div>
+                    <input type="password" name="password" placeholder="Password">
+
+                </div>
+                <div>
+                    <div>
+                        <button type="submit">Sign In</button>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+
+        </div>
+
+    </div>
+    </div>
+    <p {{msg}}</p>
+
+</body>
+
+</html>

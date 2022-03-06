@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><a href="{% url 'home' %}">Home</a><span>....</span><a href="{% url 'login' %}">Librain
+            Login</a><span>....</span><a href="{% url 'librarian_logout' %}">Logout</a><span>....</span><a
+            href="{% url 'register' %}">Librain Signup</a><span>....</span><a href="{% url 'book' %}">Book CRUD</a>
+    </p>
+    <hr>
+    <div>
+        <h3> {{book.title}}</h3>
+        <br><br>
+        <img src="{{book.image.url}}" width="200px">
+        <br><br>
+        <h5>{{book.author}}</h5>
+        <br><br>
+        <p>{{book.discription}}</p>
+        <br><br>
+    </div>
+</body>
+
+</html>

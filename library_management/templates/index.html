@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+
+<body>
+    <p><a href="{% url 'home' %}">Home</a><span>....</span><a href="{% url 'login' %}">Librain
+            Login</a><span>....</span><a href="{% url 'librarian_logout' %}">Logout</a><span>....</span><a
+            href="{% url 'register' %}">Librain Signup</a><span>....</span><a href="{% url 'book' %}">Book CRUD</a>
+    </p>
+    <hr>
+    <h1>Welcome To {{ user.get_full_name }}</h1>
+
+    <div>
+        {% for book in books %}
+        <a href="{% url 'single_book' book.id %}">
+            <h3> {{book.title}}</h3>
+            <img src="{{book.image.url}}" width="100px">
+            <h5>{{book.author}}</h5>
+
+        </a>
+        <p>{{book.discription|truncatewords:10}}</p>
+        {% endfor %}
+    </div>
+
+
+</body>
+
+</html>

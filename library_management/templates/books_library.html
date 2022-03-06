@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p><a href="{% url 'home' %}">Home</a><span>....</span><a href="{% url 'login' %}">Librain
+            Login</a><span>....</span><a href="{% url 'librarian_logout' %}">Logout</a><span>....</span><a
+            href="{% url 'register' %}">Librain Signup</a><span>....</span><a href="{% url 'book' %}">Book CRUD</a>
+    </p>
+    <hr>
+
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Book Id</th>
+                    <th>Book Title</th>
+                    <th>Book Image</th>
+                    <th>Book Author</th>
+                    <th>Book Discription</th>
+                    <th>Book Operations</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for book in books %}
+                <tr>
+                    <td>{{book.id}}</td>
+                    <td>{{book.title}}</td>
+                    <td><img src="{{book.image.url}}" width="50px"></td>
+                    <td>{{book.author}}</td>
+                    <td>{{book.discription|truncatewords:10}}</td>
+                    <td><span><a href="{% url 'book_edit' book.id %}">Edit or Delete</a></span></td>
+                </tr>
+                {% endfor %}
+
+
+            </tbody>
+
+        </table>
+    </div>
+    <hr>
+    <h2>For Create a New Books in Library</h2>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            <div>
+
+                {{form.as_p}}
+            </div>
+        </div>
+        <!-- /.card-body -->
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+    {{msg}}
+    </div>
+</body>
+
+</html>

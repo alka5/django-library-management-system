@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <p><a href="{% url 'home' %}">Home</a><span>....</span><a href="{% url 'login' %}">Librain
+            Login</a><span>....</span><a href="{% url 'librarian_logout' %}">Logout</a><span>....</span><a
+            href="{% url 'register' %}">Librain Signup</a><span>....</span><a href="{% url 'book' %}">Book CRUD</a>
+    </p>
+    <hr>
+    <form action="{% url 'book_u' book.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h5>
+            <div><span> Book Id :{{book.id}}-></span></div>
+            <br><br>
+            <div><span> Title : </span><input type="text" name="title" value="{{book.title}}"></div>
+            <br><br>
+            <div><span> Image : </span><img src="{{book.image.url}}" width="20px"><input type="file"
+                    value="{{book.image}}" accept="image/*" name="image"></div>
+            <br><br>
+            <div><span> Author : </span><input type="text" name="author" value="{{book.author}}"></div>
+            <br><br>
+            <div><span> Description : </span><input type="text" name="discription" value="{{book.discription}}">
+            </div>
+            <br><br>
+            <div><button type="submit">Submit</button></div>
+        </h5>
+        <p><a href="{% url 'delete' book.id %}">Delete</a></p>
+
+
+    </form>
+</body>
+
+</html>
